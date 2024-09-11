@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="ff" green="ff" red="99" type="rgb"/>
-    </Property>
-  </Properties>
-  <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
-  </SyntheticProperties>
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -69,20 +59,20 @@
                   <Component id="nameLbl" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="cityLbl" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="saveBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="provincelbl" min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="postalcodeLbl" min="-2" max="-2" attributes="0"/>
+                              <Component id="provincelbl" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="postalcodeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   <Component id="provinceTxt" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
@@ -117,7 +107,7 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="idLbl" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,7 +123,7 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="dobLbl" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,7 +164,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="152" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -182,39 +172,20 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="18" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Customer Foam"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="idLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="ID"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="titleLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Title"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="nameLbl">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Serif" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="cityLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="City"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="dobLbl">
@@ -225,65 +196,6 @@
         <Property name="text" type="java.lang.String" value="DOB"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="salaryLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Salary"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="titleTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="titleTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="idTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="salaryTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nameTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="dobTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dobTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="addressTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="addressLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Address"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cityTxt">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cityTxtActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="cityLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Serif" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="City"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="provincelbl">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -292,9 +204,22 @@
         <Property name="text" type="java.lang.String" value="Province"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="salaryLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Salary"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="provinceTxt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="provinceTxtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="titleTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="titleTxtActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="postalcodeLbl">
@@ -305,9 +230,19 @@
         <Property name="text" type="java.lang.String" value="Postal Code"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="idTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTxtActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JTextField" name="postalcodeTxt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postalcodeTxtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="salaryTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryTxtActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="saveBtn">
@@ -327,6 +262,11 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveBtnActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JTextField" name="nameTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTxtActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="updateBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -340,6 +280,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="dobTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dobTxtActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="deleteBtn">
       <Properties>
@@ -355,6 +300,22 @@
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Customer Form"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressTxtActionPerformed"/>
+      </Events>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -365,14 +326,12 @@
         <Component class="javax.swing.JTable" name="tbl1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="0">
+              <Table columnCount="7" rowCount="0">
                 <Column editable="true" title="ID" type="java.lang.Object"/>
-                <Column editable="true" title="Title " type="java.lang.Object"/>
                 <Column editable="true" title="Name" type="java.lang.Object"/>
                 <Column editable="true" title="DOB" type="java.lang.Object"/>
                 <Column editable="true" title="Sallary" type="java.lang.Object"/>
                 <Column editable="true" title="Addres" type="java.lang.Object"/>
-                <Column editable="true" title="City" type="java.lang.Object"/>
                 <Column editable="true" title="Province" type="java.lang.Object"/>
                 <Column editable="true" title="PostalCode" type="java.lang.Object"/>
               </Table>
@@ -380,47 +339,37 @@
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="ID"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="Name"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="DOB"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="Sallary"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="Addres"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="Province"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
+                  <Title value="PostalCod"/>
                   <Editor/>
                   <Renderer/>
                 </Column>
@@ -433,5 +382,34 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="idLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Address"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="titleLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Serif" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Title"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cityTxt">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cityTxtActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

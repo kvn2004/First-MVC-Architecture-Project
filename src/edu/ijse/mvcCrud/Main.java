@@ -4,10 +4,8 @@
  */
 package edu.ijse.mvcCrud;
 
-import edu.ijse.mvcCrud.db.DBConnection;
-import edu.ijse.mvcCrud.view.CustomerView;
+import edu.ijse.mvcCrud.view.LayoutFrame;
 import java.sql.SQLException;
-import java.sql.*;
 
 /**
  *
@@ -20,9 +18,7 @@ public class Main {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-        CustomerView customerView = new CustomerView();
-        customerView.setVisible(true);
-        customerView.setLocationRelativeTo(null);
+       new LayoutFrame().setVisible(true);
 
     }
 

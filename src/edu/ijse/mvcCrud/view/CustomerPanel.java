@@ -1,22 +1,29 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package edu.ijse.mvcCrud.view;
+
+import edu.ijse.mvcCrud.controller.CustomerController;
+import edu.ijse.mvcCrud.dto.CustomerDTO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author KVN2004
  */
-public class CustomerView extends javax.swing.JFrame {
+public class CustomerPanel extends javax.swing.JPanel {
 
-   
+    CustomerController customerController = new CustomerController();
+
     /**
-     * Creates new form CustomerView
+     * Creates new form CustomerPanel
      */
-    public CustomerView()  {
-        
+    public CustomerPanel() {
         initComponents();
+        loadTable();
     }
 
     /**
@@ -28,103 +35,45 @@ public class CustomerView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        idLbl = new javax.swing.JLabel();
-        titleLbl = new javax.swing.JLabel();
         nameLbl = new javax.swing.JLabel();
-        dobLbl = new javax.swing.JLabel();
-        salaryLbl = new javax.swing.JLabel();
-        titleTxt = new javax.swing.JTextField();
-        idTxt = new javax.swing.JTextField();
-        salaryTxt = new javax.swing.JTextField();
-        nameTxt = new javax.swing.JTextField();
-        dobTxt = new javax.swing.JTextField();
-        addressTxt = new javax.swing.JTextField();
-        addressLbl = new javax.swing.JLabel();
-        cityTxt = new javax.swing.JTextField();
         cityLbl = new javax.swing.JLabel();
+        dobLbl = new javax.swing.JLabel();
         provincelbl = new javax.swing.JLabel();
+        salaryLbl = new javax.swing.JLabel();
         provinceTxt = new javax.swing.JTextField();
+        titleTxt = new javax.swing.JTextField();
         postalcodeLbl = new javax.swing.JLabel();
+        idTxt = new javax.swing.JTextField();
         postalcodeTxt = new javax.swing.JTextField();
+        salaryTxt = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
+        nameTxt = new javax.swing.JTextField();
         updateBtn = new javax.swing.JButton();
+        dobTxt = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        addressTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl1 = new javax.swing.JTable();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(153, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Customer Foam");
-
-        idLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        idLbl.setText("ID");
-
-        titleLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        titleLbl.setText("Title");
+        idLbl = new javax.swing.JLabel();
+        addressLbl = new javax.swing.JLabel();
+        titleLbl = new javax.swing.JLabel();
+        cityTxt = new javax.swing.JTextField();
 
         nameLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         nameLbl.setText("Name");
 
-        dobLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        dobLbl.setText("DOB");
-
-        salaryLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        salaryLbl.setText("Salary");
-
-        titleTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleTxtActionPerformed(evt);
-            }
-        });
-
-        idTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idTxtActionPerformed(evt);
-            }
-        });
-
-        salaryTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salaryTxtActionPerformed(evt);
-            }
-        });
-
-        nameTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTxtActionPerformed(evt);
-            }
-        });
-
-        dobTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dobTxtActionPerformed(evt);
-            }
-        });
-
-        addressTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTxtActionPerformed(evt);
-            }
-        });
-
-        addressLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        addressLbl.setText("Address");
-
-        cityTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityTxtActionPerformed(evt);
-            }
-        });
-
         cityLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         cityLbl.setText("City");
 
+        dobLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        dobLbl.setText("DOB");
+
         provincelbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         provincelbl.setText("Province");
+
+        salaryLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        salaryLbl.setText("Salary");
 
         provinceTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,12 +81,30 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
+        titleTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleTxtActionPerformed(evt);
+            }
+        });
+
         postalcodeLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         postalcodeLbl.setText("Postal Code");
+
+        idTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTxtActionPerformed(evt);
+            }
+        });
 
         postalcodeTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 postalcodeTxtActionPerformed(evt);
+            }
+        });
+
+        salaryTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salaryTxtActionPerformed(evt);
             }
         });
 
@@ -151,28 +118,74 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTxtActionPerformed(evt);
+            }
+        });
+
         updateBtn.setBackground(new java.awt.Color(204, 255, 204));
         updateBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(0, 204, 0));
         updateBtn.setText("Update");
+
+        dobTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dobTxtActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setBackground(new java.awt.Color(255, 204, 204));
         deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(255, 0, 0));
         deleteBtn.setText("Delete");
 
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("Customer Form");
+
+        addressTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressTxtActionPerformed(evt);
+            }
+        });
+
         tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Title ", "Name", "DOB", "Sallary", "Addres", "City", "Province", "PostalCode"
+                "ID", "Name", "DOB", "Sallary", "Addres", "Province", "PostalCode"
             }
         ));
         jScrollPane1.setViewportView(tbl1);
+        if (tbl1.getColumnModel().getColumnCount() > 0) {
+            tbl1.getColumnModel().getColumn(0).setHeaderValue("ID");
+            tbl1.getColumnModel().getColumn(1).setHeaderValue("Name");
+            tbl1.getColumnModel().getColumn(2).setHeaderValue("DOB");
+            tbl1.getColumnModel().getColumn(3).setHeaderValue("Sallary");
+            tbl1.getColumnModel().getColumn(4).setHeaderValue("Addres");
+            tbl1.getColumnModel().getColumn(5).setHeaderValue("Province");
+            tbl1.getColumnModel().getColumn(6).setHeaderValue("PostalCod");
+        }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        idLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        idLbl.setText("ID");
+
+        addressLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        addressLbl.setText("Address");
+
+        titleLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        titleLbl.setText("Title");
+
+        cityTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityTxtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -288,13 +301,15 @@ public class CustomerView extends javax.swing.JFrame {
                             .addComponent(saveBtn)
                             .addComponent(updateBtn)
                             .addComponent(deleteBtn))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void provinceTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_provinceTxtActionPerformed
 
     private void titleTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleTxtActionPerformed
         // TODO add your handling code here:
@@ -304,9 +319,17 @@ public class CustomerView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idTxtActionPerformed
 
+    private void postalcodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalcodeTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postalcodeTxtActionPerformed
+
     private void salaryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_salaryTxtActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
         // TODO add your handling code here:
@@ -324,24 +347,7 @@ public class CustomerView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityTxtActionPerformed
 
-    private void provinceTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_provinceTxtActionPerformed
 
-    private void postalcodeTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalcodeTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_postalcodeTxtActionPerformed
-
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_saveBtnActionPerformed
-
-   
-
-    /**
-     * @param args the command line arguments
-     */
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLbl;
     private javax.swing.JTextField addressTxt;
@@ -368,4 +374,24 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JTextField titleTxt;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTable() {
+        String columns[] = {"Customer Id", "Cutomer Name", "DOB", "Salary", "Address", "Province", "Postal Code"};
+        DefaultTableModel dtm = new DefaultTableModel(columns,0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tbl1.setModel(dtm);
+        try {
+            List<CustomerDTO> allCustomer = customerController.getAllCustomer();
+            for (CustomerDTO dto : allCustomer) {
+                Object[] rowdata = {dto.getId(), dto.getTitle() + " " + dto.getName(), dto.getDob(), dto.getSalary(), dto.getAddress() + ", " + dto.getCity(), dto.getProvince(), dto.getPostalCode()};
+                dtm.addRow(rowdata);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
 }
