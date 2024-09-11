@@ -32,10 +32,10 @@ public class CustomerModel {
         return stm.executeUpdate();
 
     }
-    
-     public int updateCustomer(CustomerDTO customerDTO) throws ClassNotFoundException, SQLException {
+
+    public int updateCustomer(CustomerDTO customerDTO) throws ClassNotFoundException, SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
-        String sql ="UPDATE Customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
+        String sql = "UPDATE Customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
 
         PreparedStatement stm = connection.prepareStatement(sql);
 
@@ -48,6 +48,18 @@ public class CustomerModel {
         stm.setString(6, customerDTO.getCity());
         stm.setString(7, customerDTO.getProvince());
         stm.setString(8, customerDTO.getPostalCode());
+
+        return stm.executeUpdate();
+
+    }
+
+    public int deleteCustomer(String id) throws ClassNotFoundException, SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "DELETE FROM Customer WHERE CustID = ?";
+
+        PreparedStatement stm = connection.prepareStatement(sql);
+
+        stm.setString(1, id);
 
         return stm.executeUpdate();
 
