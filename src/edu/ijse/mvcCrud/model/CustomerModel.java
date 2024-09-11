@@ -7,6 +7,8 @@ package edu.ijse.mvcCrud.model;
 import edu.ijse.mvcCrud.db.DBConnection;
 import edu.ijse.mvcCrud.dto.CustomerDTO;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -63,6 +65,48 @@ public class CustomerModel {
 
         return stm.executeUpdate();
 
+    }
+
+    public CustomerDTO searchCustomer(String id) throws Exception {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "SELECT * FROM Customer WHERE CustID = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, id);
+
+        ResultSet rst = statement.executeQuery();
+        if (rst.next()) {
+            CustomerDTO dto = new CustomerDTO(
+                    rst.getString(1),
+                    rst.getString(2), rst.getString(3),
+                    rst.getString(4), rst.getString(5),
+                    rst.getString(6), rst.getString(7),
+                    rst.getString(8), rst.getDouble(9)
+            );
+
+            return dto;
+        }
+
+        return null;
+    }
+    
+        public List<CustomerDTO> getAllCustomer() throws Exception{
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "SELECT * FROM Customer";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        List<CustomerDTO> customerDtos = new ArrayList<>();
+        
+        ResultSet rst = statement.executeQuery();
+        while(rst.next()){
+            CustomerDTO dto = new CustomerDTO(rst.getString(1),
+                    rst.getString(2), rst.getString(3),
+                    rst.getString(4), rst.getString(5),
+                    rst.getString(6), rst.getString(7),
+                    rst.getString(8), rst.getDouble(9));
+            customerDtos.add(dto);
+        }
+        
+        return customerDtos;
     }
 
 }
