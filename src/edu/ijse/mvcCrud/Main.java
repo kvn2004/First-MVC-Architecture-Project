@@ -18,11 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        System.out.println("eww");
-        DBConnection.getInstance().getConnection();
-         //System.out.println("eww");
-        
-        
-    }
+
     
+
+    }
+
 }
