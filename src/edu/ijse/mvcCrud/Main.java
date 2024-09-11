@@ -4,6 +4,10 @@
  */
 package edu.ijse.mvcCrud;
 
+import edu.ijse.mvcCrud.db.DBConnection;
+import java.sql.SQLException;
+import java.sql.*;
+
 /**
  *
  * @author KVN2004
@@ -13,8 +17,12 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        System.out.println("eww");
+        DBConnection.getInstance().getConnection();
+         //System.out.println("eww");
+        
+        
     }
     
 }
