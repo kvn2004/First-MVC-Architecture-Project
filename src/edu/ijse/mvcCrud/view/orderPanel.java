@@ -12,20 +12,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author KVN2004
  */
 public class orderPanel extends javax.swing.JPanel {
-    private CustomerController customerController= new CustomerController();
-    private ItemController itemController =new ItemController();
+
+    private CustomerController customerController = new CustomerController();
+    private ItemController itemController = new ItemController();
 
     /**
      * Creates new form orderPanel
      */
     public orderPanel() {
         initComponents();
+        loadTable();
     }
 
     /**
@@ -53,7 +57,7 @@ public class orderPanel extends javax.swing.JPanel {
         txtDiscount = new javax.swing.JTextField();
         btnAddToCart = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl1 = new javax.swing.JTable();
         btnPlaceOrder = new javax.swing.JButton();
         txtCustomer = new javax.swing.JTextField();
         txtItem = new javax.swing.JTextField();
@@ -150,8 +154,13 @@ public class orderPanel extends javax.swing.JPanel {
         btnAddToCart.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         btnAddToCart.setForeground(new java.awt.Color(255, 0, 0));
         btnAddToCart.setText("Add To Cart");
+        btnAddToCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddToCartMouseClicked(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -162,7 +171,7 @@ public class orderPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl1);
 
         btnPlaceOrder.setBackground(new java.awt.Color(204, 255, 204));
         btnPlaceOrder.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
@@ -304,6 +313,10 @@ public class orderPanel extends javax.swing.JPanel {
         searchItem();
     }//GEN-LAST:event_btnItemSearchMouseClicked
 
+    private void btnAddToCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddToCartMouseClicked
+        addToCArt();
+    }//GEN-LAST:event_btnAddToCartMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToCart;
@@ -318,7 +331,7 @@ public class orderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl1;
     private javax.swing.JTextField txtCId;
     private javax.swing.JTextField txtCustomer;
     private javax.swing.JTextField txtDiscount;
@@ -333,7 +346,7 @@ public class orderPanel extends javax.swing.JPanel {
             String CId = txtCId.getText();
             CustomerDTO searchCustomer = customerController.searchCustomer(CId);
             if (searchCustomer != null) {
-                txtCustomer.setText(searchCustomer.getTitle()+"."+searchCustomer.getName());
+                txtCustomer.setText(searchCustomer.getTitle() + "." + searchCustomer.getName());
             } else {
                 JOptionPane.showMessageDialog(this, "INVALID CUSTOMER ID");
             }
@@ -347,14 +360,32 @@ public class orderPanel extends javax.swing.JPanel {
             String ItemCode = txtItemCode.getText();
             ItemDto searchItem = itemController.searchItem(ItemCode);
             if (searchItem != null) {
-                txtItem.setText(searchItem.getDescription()+"  |  "+searchItem.getPackSize()+"  |  "+searchItem.getQtyOnHand()+"  |  "+searchItem.getUnitPrice());
+                txtItem.setText(searchItem.getDescription() + "  |  " + searchItem.getPackSize() + "  |  " + searchItem.getQtyOnHand() + "  |  " + searchItem.getUnitPrice());
             } else {
-                 JOptionPane.showMessageDialog(this, "INVALID item ID");
+                JOptionPane.showMessageDialog(this, "INVALID item ID");
             }
         } catch (SQLException ex) {
             Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void loadTable() {
+        String columns[] = {"ITEM CODE", "QTY", "Discount"};
+        DefaultTableModel dtm = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        tbl1.setModel(dtm);
+    }
+
+    private void addToCArt() {
+        DefaultTableModel model = (DefaultTableModel) tbl1.getModel();
+        model.addRow(new Object[]{txtItemCode.getText(),txtQTY.getText(),txtDiscount.getText()});
+        
     }
 }
