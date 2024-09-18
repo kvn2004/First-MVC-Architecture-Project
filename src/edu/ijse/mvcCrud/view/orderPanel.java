@@ -6,9 +6,15 @@ package edu.ijse.mvcCrud.view;
 
 import edu.ijse.mvcCrud.controller.CustomerController;
 import edu.ijse.mvcCrud.controller.ItemController;
+import edu.ijse.mvcCrud.controller.OrderController;
 import edu.ijse.mvcCrud.dto.CustomerDTO;
 import edu.ijse.mvcCrud.dto.ItemDto;
+import edu.ijse.mvcCrud.dto.OrderDetailDTO;
+import edu.ijse.mvcCrud.dto.OrderDto;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,9 +26,10 @@ import javax.swing.table.TableModel;
  * @author KVN2004
  */
 public class orderPanel extends javax.swing.JPanel {
-
+    private OrderController orderController = new OrderController();
     private CustomerController customerController = new CustomerController();
     private ItemController itemController = new ItemController();
+    private ArrayList<OrderDetailDTO> orderDetailDTO = new ArrayList<>();
 
     /**
      * Creates new form orderPanel
@@ -177,6 +184,11 @@ public class orderPanel extends javax.swing.JPanel {
         btnPlaceOrder.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         btnPlaceOrder.setForeground(new java.awt.Color(0, 204, 0));
         btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlaceOrderMouseClicked(evt);
+            }
+        });
 
         txtCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,6 +329,16 @@ public class orderPanel extends javax.swing.JPanel {
         addToCArt();
     }//GEN-LAST:event_btnAddToCartMouseClicked
 
+    private void btnPlaceOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlaceOrderMouseClicked
+        try {
+            placeOrder();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPlaceOrderMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToCart;
@@ -354,7 +376,7 @@ public class orderPanel extends javax.swing.JPanel {
             Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void searchItem() {
         try {
             String ItemCode = txtItemCode.getText();
@@ -370,7 +392,7 @@ public class orderPanel extends javax.swing.JPanel {
             Logger.getLogger(orderPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void loadTable() {
         String columns[] = {"ITEM CODE", "QTY", "Discount"};
         DefaultTableModel dtm = new DefaultTableModel(columns, 0) {
@@ -379,13 +401,48 @@ public class orderPanel extends javax.swing.JPanel {
                 return false;
             }
         };
-
+        
         tbl1.setModel(dtm);
     }
-
+    
     private void addToCArt() {
+        OrderDetailDTO dto = new OrderDetailDTO();
+        dto.setItemCode(txtItemCode.getText());
+        dto.setQty(Integer.parseInt(txtQTY.getText()));
+        dto.setDiscount(Double.parseDouble(txtDiscount.getText()));
+        
+        orderDetailDTO.add(dto);
+        Object[] rawData = {dto.getItemCode(), dto.getQty(), dto.getDiscount()};
         DefaultTableModel model = (DefaultTableModel) tbl1.getModel();
-        model.addRow(new Object[]{txtItemCode.getText(),txtQTY.getText(),txtDiscount.getText()});
+        model.addRow(rawData);
+        
+        clear();
         
     }
+    
+    private void placeOrder() throws ClassNotFoundException, SQLException {
+        OrderDto dto = new OrderDto();
+        dto.setCustId(txtCId.getText());
+        dto.setOrderId(txtOId.getText());
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String Date = simpleDateFormat.format(new Date());
+        dto.setOrderDate(Date);
+        
+       dto.setOrderDetailDtos(orderDetailDTO);
+       String resp =orderController.placeOrderSave(dto);
+       
+       JOptionPane.showMessageDialog(this, resp);
+       
+       
+        System.err.println(dto.toString());
+    }
+    
+    private void clear() {
+        txtDiscount.setText("");
+        txtItemCode.setText("");
+        txtQTY.setText("");
+        txtItem.setText("");
+    }
+    
 }
