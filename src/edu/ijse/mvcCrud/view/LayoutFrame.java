@@ -30,6 +30,8 @@ public class LayoutFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnManageCustomer = new javax.swing.JButton();
+        btnManageCustomer1 = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,13 +75,45 @@ public class LayoutFrame extends javax.swing.JFrame {
             }
         });
 
+        btnManageCustomer1.setBackground(new java.awt.Color(220, 216, 216));
+        btnManageCustomer1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnManageCustomer1.setForeground(new java.awt.Color(51, 51, 51));
+        btnManageCustomer1.setText("MANAGE ITEMS");
+        btnManageCustomer1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnManageCustomer1MouseClicked(evt);
+            }
+        });
+        btnManageCustomer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageCustomer1ActionPerformed(evt);
+            }
+        });
+
+        btnOrder.setBackground(new java.awt.Color(220, 216, 216));
+        btnOrder.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnOrder.setForeground(new java.awt.Color(51, 51, 51));
+        btnOrder.setText("ORDER");
+        btnOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOrderMouseClicked(evt);
+            }
+        });
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(btnManageCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageCustomer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -87,6 +121,10 @@ public class LayoutFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(btnManageCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnManageCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(442, Short.MAX_VALUE))
         );
 
@@ -134,6 +172,22 @@ public class LayoutFrame extends javax.swing.JFrame {
         loadCustomerForm();
     }//GEN-LAST:event_btnManageCustomerMouseClicked
 
+    private void btnManageCustomer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageCustomer1MouseClicked
+        loadItemForm();
+    }//GEN-LAST:event_btnManageCustomer1MouseClicked
+
+    private void btnManageCustomer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomer1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManageCustomer1ActionPerformed
+
+    private void btnOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrderMouseClicked
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+       loadOrderForm();
+    }//GEN-LAST:event_btnOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,6 +195,8 @@ public class LayoutFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JButton btnManageCustomer;
+    private javax.swing.JButton btnManageCustomer1;
+    private javax.swing.JButton btnOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -151,6 +207,23 @@ public class LayoutFrame extends javax.swing.JFrame {
         CustomerPanel customerPanel = new CustomerPanel();
         customerPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
         bodyPanel.add(customerPanel);
+        bodyPanel.repaint();
+        bodyPanel.revalidate();
+    }
+
+    private void loadItemForm() {
+        bodyPanel.removeAll();
+        ItemPanel itemPanel = new ItemPanel();
+        itemPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
+        bodyPanel.add(itemPanel);
+        bodyPanel.repaint();
+        bodyPanel.revalidate();
+    }
+     private void loadOrderForm() {
+        bodyPanel.removeAll();
+        orderPanel orderPanel = new orderPanel();
+        orderPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
+        bodyPanel.add(orderPanel);
         bodyPanel.repaint();
         bodyPanel.revalidate();
     }

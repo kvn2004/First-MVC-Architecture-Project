@@ -88,24 +88,30 @@ public class CustomerModel {
 
         return null;
     }
-    
-        public List<CustomerDTO> getAllCustomer() throws Exception{
+
+    public List<CustomerDTO> getAllCustomer() throws Exception {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "SELECT * FROM Customer";
         PreparedStatement statement = connection.prepareStatement(sql);
-        
+
         List<CustomerDTO> customerDtos = new ArrayList<>();
-        
+
         ResultSet rst = statement.executeQuery();
-        while(rst.next()){
-            CustomerDTO dto = new CustomerDTO(rst.getString(1),
-                    rst.getString(2), rst.getString(3),
-                    rst.getString(4), rst.getString(5),
-                    rst.getString(6), rst.getString(7),
-                    rst.getString(8), rst.getDouble(9));
+        while (rst.next()) {
+            CustomerDTO dto = new CustomerDTO(
+                    rst.getString("CustID"),
+                    rst.getString("CustTitle"),
+                    rst.getString("CustName"),
+                    rst.getString("CustAddress"),
+                    rst.getString("City"),
+                    rst.getString("Province"),
+                    rst.getString("PostalCode"),
+                    rst.getString("DOB"),
+                    rst.getDouble("salary")
+            );
             customerDtos.add(dto);
         }
-        
+
         return customerDtos;
     }
 

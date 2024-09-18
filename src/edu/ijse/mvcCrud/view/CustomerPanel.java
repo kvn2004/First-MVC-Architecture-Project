@@ -7,6 +7,8 @@ package edu.ijse.mvcCrud.view;
 import edu.ijse.mvcCrud.controller.CustomerController;
 import edu.ijse.mvcCrud.dto.CustomerDTO;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -112,6 +114,11 @@ public class CustomerPanel extends javax.swing.JPanel {
         saveBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(0, 0, 255));
         saveBtn.setText("Save");
+        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveBtnMouseClicked(evt);
+            }
+        });
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
@@ -128,6 +135,11 @@ public class CustomerPanel extends javax.swing.JPanel {
         updateBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(0, 204, 0));
         updateBtn.setText("Update");
+        updateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateBtnMouseClicked(evt);
+            }
+        });
 
         dobTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +151,11 @@ public class CustomerPanel extends javax.swing.JPanel {
         deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteBtn.setForeground(new java.awt.Color(255, 0, 0));
         deleteBtn.setText("Delete");
+        deleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteBtnMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -158,16 +175,13 @@ public class CustomerPanel extends javax.swing.JPanel {
                 "ID", "Name", "DOB", "Sallary", "Addres", "Province", "PostalCode"
             }
         ));
+        tbl1.getTableHeader().setReorderingAllowed(false);
+        tbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl1);
-        if (tbl1.getColumnModel().getColumnCount() > 0) {
-            tbl1.getColumnModel().getColumn(0).setHeaderValue("ID");
-            tbl1.getColumnModel().getColumn(1).setHeaderValue("Name");
-            tbl1.getColumnModel().getColumn(2).setHeaderValue("DOB");
-            tbl1.getColumnModel().getColumn(3).setHeaderValue("Sallary");
-            tbl1.getColumnModel().getColumn(4).setHeaderValue("Addres");
-            tbl1.getColumnModel().getColumn(5).setHeaderValue("Province");
-            tbl1.getColumnModel().getColumn(6).setHeaderValue("PostalCod");
-        }
 
         idLbl.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         idLbl.setText("ID");
@@ -347,6 +361,22 @@ public class CustomerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityTxtActionPerformed
 
+    private void deleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBtnMouseClicked
+
+    private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnMouseClicked
+
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveBtnMouseClicked
+
+    private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
+      searchCustomer();
+    }//GEN-LAST:event_tbl1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLbl;
@@ -377,7 +407,7 @@ public class CustomerPanel extends javax.swing.JPanel {
 
     private void loadTable() {
         String columns[] = {"Customer Id", "Cutomer Name", "DOB", "Salary", "Address", "Province", "Postal Code"};
-        DefaultTableModel dtm = new DefaultTableModel(columns,0) {
+        DefaultTableModel dtm = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -393,5 +423,27 @@ public class CustomerPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+    }
+
+    private void searchCustomer() {
+        try {
+            String customerID = (String) tbl1.getValueAt(tbl1.getSelectedRow(), 0);
+
+            CustomerDTO resp = customerController.searchCustomer(customerID);
+            if (resp != null) {
+                idTxt.setText(customerID);
+                titleTxt.setText(resp.getTitle());
+                nameTxt.setText(resp.getName());
+                dobTxt.setText(resp.getDob());
+                salaryTxt.setText(resp.getSalary() + "");
+                addressTxt.setText(resp.getAddress());
+                cityTxt.setText(resp.getCity());
+                provinceTxt.setText(resp.getProvince());
+                postalcodeTxt.setText(resp.getPostalCode());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
